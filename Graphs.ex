@@ -19,5 +19,29 @@ defmodule UnionFind do
 
     def unite({vertices, ids},p, q) do
         pid = Enum.at(ids, p)
+        qid = Enum.at(ids, q)
+        changed_ids = change_ids(ids, pid, qid)
+        {vertices, changed_ids}
+    end
+    #privatly iterate over list and change ids
+    defp change_ids(ids, pid, qid) do
+        case ids do
+            [h|t] ->
+                if h === pid do
+                    [qid] ++ change_ids(t, pid, qid)
+                else
+                    [h] ++ change_ids(t, pid, qid)
+                end
+            [h] ->
+                if h === pid do
+                    [qid]
+                else
+                    [h]
+                end
+            [] -> []
+        end
     end
 end
+
+#g = UnionFind.graph(5)
+#g = UnionFind.unite(g,1,2)
