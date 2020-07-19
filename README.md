@@ -9,7 +9,6 @@
    - [x] Merge lists
    - [x] Merge sort
  - Graphs
-   - [ ] Graph defnition
-   - [ ] Union find
+   - [X] Union find
    - [ ] DFS
    - [ ] BFS
