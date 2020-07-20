@@ -14,7 +14,7 @@ defmodule UnionFind do
 
     #simple find
     def find({vertices, ids},p, q) do
-        Enum.at(ids, p) === Enum.at(ids, p)
+        Enum.at(ids, p) === Enum.at(ids, q)
     end
 
     def unite({vertices, ids},p, q) do
@@ -44,6 +44,8 @@ defmodule UnionFind do
 end
 #g = UnionFind.graph(5)
 #g = UnionFind.unite(g,1,2)
+#g = UnionFind.unite(g,2,3)
+#UnionFind.find(g,1,3)
 
 defmodule DFS do
     #define graph as a list of adj lists, numbering from 0 to n-1
@@ -77,11 +79,11 @@ defmodule DFS do
     end
 end
 
-g = DFS.graph(4)
-g = DFS.add_edge(g, 0, 1)
-g = DFS.add_edge(g, 0, 2) 
-g = DFS.add_edge(g, 1, 2) 
-g = DFS.add_edge(g, 2, 0) 
-g = DFS.add_edge(g, 2, 3) 
-g = DFS.add_edge(g, 3, 3) 
-DFS.dfs(g, 0)
+#g = DFS.graph(4)
+#g = DFS.add_edge(g, 0, 1)
+#g = DFS.add_edge(g, 0, 2) 
+#g = DFS.add_edge(g, 1, 2) 
+#g = DFS.add_edge(g, 2, 0) 
+#g = DFS.add_edge(g, 2, 3) 
+#g = DFS.add_edge(g, 3, 3) 
+#DFS.dfs(g, 0)
