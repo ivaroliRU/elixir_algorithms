@@ -42,6 +42,46 @@ defmodule UnionFind do
         end
     end
 end
-
 #g = UnionFind.graph(5)
 #g = UnionFind.unite(g,1,2)
+
+defmodule DFS do
+    #define graph as a list of adj lists, numbering from 0 to n-1
+    def graph(n) do
+        Enum.map(1..n, fn x -> [] end)
+    end
+
+    #add edge between 2 vertices
+    def add_edge(graph, v,w) do
+        new_adj = Enum.at(graph, v) ++ [w]
+        List.replace_at(graph, v, new_adj)
+    end
+
+    #perform dfs traversal
+    def dfs(graph, v) do
+        #visited nodes
+        visited = Enum.map(1..length(graph), fn x -> false end)
+        dfs(graph, v, visited)
+    end
+    defp dfs(graph, v,visited) do
+        #set the current node to visited
+        visited = List.replace_at(visited, v, true)
+        next = Enum.at(graph, v)
+        IO.puts "Visited node #{v}"
+
+        for w <- next do
+            if Enum.at(visited, w) == false do
+                dfs(graph, w, visited)
+            end
+        end
+    end
+end
+
+g = DFS.graph(4)
+g = DFS.add_edge(g, 0, 1)
+g = DFS.add_edge(g, 0, 2) 
+g = DFS.add_edge(g, 1, 2) 
+g = DFS.add_edge(g, 2, 0) 
+g = DFS.add_edge(g, 2, 3) 
+g = DFS.add_edge(g, 3, 3) 
+DFS.dfs(g, 0)

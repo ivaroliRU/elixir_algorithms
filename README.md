@@ -9,6 +9,6 @@
    - [x] Merge lists
    - [x] Merge sort
  - Graphs
-   - [X] Union find
-   - [ ] DFS
+   - [x] Union find
+   - [x] DFS
    - [ ] BFS
