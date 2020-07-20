@@ -32,18 +32,18 @@ defmodule ListOperations do
     #merge two sorted arrays
     def merge([h1|t1], [h2|t2]) do
         if h1 < h2 do
-            [h1, h2] ++ merge(t1, t2)
+            [h1] ++ merge(t1, [h2|t2])
         else
-            [h2, h1] ++ merge(t1, t2)
+            [h2] ++ merge([h1|t1], t2)
         end
     end
-    def merge([h1|t1], _) do
+    def merge([h1|t1], []) do
         [h1|t1]
     end
-    def merge(_, [h2|t2]) do
+    def merge([], [h2|t2]) do
         [h2|t2]
     end
-    def merge(_, _) do
+    def merge([],[]) do
         []
     end
 
@@ -53,8 +53,10 @@ defmodule ListOperations do
         [] -> []
         [x] -> [x]
         [h|t] ->
+            #find splitting point
             point = length(arr) |> div(2)
             {left, right} = arr |> split(point)
+            #recursively sort and merge the split arrays
             merge(sort(left), sort(right))
         end
     end
